@@ -1,0 +1,45 @@
+�
+
+    {�Bh�  �                   �l   � d Z ddlZddlZddlmZ d
+dee         dedej        fd�Zdedej        fd	�ZdS )z,
+Logging configuration for the application.
+�    N)�Optional�INFO�name�level�returnc                 �  � t          j        | �  �        }|j        �                    �   �          t	          t           |�                    �   �         t           j        �  �        }|�                    |�  �         t          j        t          j
+        �  �        }|�                    |�  �         t          j        dd��  �        }|�                    |�  �         |�
+                    |�  �         d|_        |S )z�
+    Setup and configure logger for the application.
+    
+    Args:
+        name: Logger name (defaults to root logger)
+        level: Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        
+    Returns:
+        Configured logger instance
+    z4%(asctime)s - %(name)s - %(levelname)s - %(message)sz%Y-%m-%d %H:%M:%S)�fmt�datefmtF)�logging�	getLogger�handlers�clear�getattr�upperr   �setLevel�
+StreamHandler�sys�stdout�	Formatter�setFormatter�
+addHandler�	propagate)r   r   �logger�
+numeric_level�console_handler�	formatters         �&/home/runner/workspace/utils/logger.py�setup_loggerr   	   s�   � � �
+�t�
+$�
+$�F� �O������ �G�U�[�[�]�]�G�L�A�A�M�
+�O�O�M�"�"�"� �+�C�J�7�7�O����]�+�+�+� �!�B�#�� � �I� � � ��+�+�+� ���o�&�&�&� �F���M�    c                 �*   � t          j        | �  �        S )z�
+    Get a logger instance with the specified name.
+    
+    Args:
+        name: Logger name
+        
+    Returns:
+        Logger instance
+    )r   r   )r   s    r   �
+get_loggerr!   3   s   � � ��T�"�"�"r   )Nr   )	�__doc__r   r   �typingr   �str�Loggerr   r!   � r   r   �<module>r'      s�   ��� � ���� 
+�
+�
+�
+� � � � � � �(� (�x��}� (�C� (�W�^� (� (� (� (�T
+#�S� 
+#�W�^� 
+#� 
+#� 
+#� 
+#� 
+#� 
+#r   
