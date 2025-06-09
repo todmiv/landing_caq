@@ -1,581 +1,313 @@
-/* НОК Строительство - Лендинг стили */
-
-:root {
-    --primary-color: #2563eb;
-    --secondary-color: #f97316;
-    --accent-color: #6b7280;
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --dark-color: #1f2937;
-    --light-color: #f8fafc;
-    --white: #ffffff;
-    --border-radius: 8px;
-    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
-}
-
-/* Общие стили */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: var(--dark-color);
-    overflow-x: hidden;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    border-radius: 2px;
-}
-
-/* Header */
-.header-section {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: rgba(31, 41, 55, 0.95);
-    backdrop-filter: blur(10px);
-    transition: var(--transition);
-}
-
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white) !important;
-}
-
-.nav-link {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.8) !important;
-    transition: var(--transition);
-}
-
-.nav-link:hover {
-    color: var(--secondary-color) !important;
-}
-
-/* Hero Section */
-.hero-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-    padding-top: 80px;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-    opacity: 0.3;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-buttons .btn {
-    padding: 12px 30px;
-    font-weight: 600;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-}
-
-.hero-stats {
-    margin-top: 3rem;
-}
-
-.stat-item h3 {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--secondary-color);
-}
-
-.hero-image {
-    position: relative;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.construction-visual {
-    position: relative;
-    width: 300px;
-    height: 300px;
-}
-
-.construction-icon, .safety-icon, .design-icon {
-    position: absolute;
-    font-size: 4rem;
-    color: var(--secondary-color);
-    animation: float 3s ease-in-out infinite;
-}
-
-.construction-icon {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-delay: 0s;
-}
-
-.safety-icon {
-    top: 20%;
-    right: 20%;
-    animation-delay: 1s;
-}
-
-.design-icon {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 2s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-/* Feature Cards */
-.feature-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    border: 1px solid #e5e7eb;
-}
-
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
-}
-
-.feature-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.feature-icon i {
-    font-size: 1.5rem;
-    color: var(--white);
-}
-
-/* Law Cards */
-.law-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    height: 100%;
-}
-
-.law-card:hover {
-    transform: translateY(-3px);
-}
-
-.law-card i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-}
-
-/* Process Steps */
-.process-step {
-    position: relative;
-    padding: 2rem 1rem;
-}
-
-.step-number {
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    background: var(--secondary-color);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.step-icon {
-    margin: 2rem 0 1rem;
-}
-
-.step-icon i {
-    font-size: 3rem;
-    color: var(--primary-color);
-}
-
-/* Benefit Cards */
-.benefit-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    border-left: 4px solid var(--primary-color);
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
-    border-left-color: var(--secondary-color);
-}
-
-.benefit-icon {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    border-radius: var(--border-radius);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.benefit-icon i {
-    font-size: 2rem;
-    color: var(--white);
-}
-
-.benefit-list {
-    list-style: none;
-    margin-top: 1rem;
-}
-
-.benefit-list li {
-    padding: 0.5rem 0;
-    color: var(--accent-color);
-    font-weight: 500;
-}
-
-.benefit-list li::before {
-    content: '✓';
-    color: var(--success-color);
-    font-weight: bold;
-    margin-right: 0.5rem;
-}
-
-.deadline-alert {
-    background: linear-gradient(45deg, var(--warning-color), #fbbf24);
-    color: var(--white);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    font-size: 1.1rem;
-}
-
-/* Pricing Cards */
-.pricing-card {
-    background: var(--white);
-    border: 2px solid #e5e7eb;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: var(--transition);
-    position: relative;
-    height: 100%;
-}
-
-.pricing-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15);
-}
-
-.pricing-card.featured {
-    border-color: var(--primary-color);
-    transform: scale(1.05);
-}
-
-.pricing-badge {
-    position: absolute;
-    top: 20px;
-    right: -30px;
-    background: var(--secondary-color);
-    color: var(--white);
-    padding: 5px 40px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    transform: rotate(45deg);
-}
-
-.pricing-header {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--light-color) 0%, #ffffff 100%);
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin: 1rem 0;
-}
-
-.currency {
-    font-size: 1.5rem;
-    vertical-align: top;
-}
-
-.pricing-features {
-    list-style: none;
-    padding: 0 2rem;
-}
-
-.pricing-features li {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #f3f4f6;
-}
-
-.pricing-features i {
-    color: var(--success-color);
-    margin-right: 0.5rem;
-}
-
-.pricing-footer {
-    padding: 2rem;
-}
-
-/* Schedule */
-.schedule-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-}
-
-.exam-date {
-    display: flex;
-    align-items: center;
-    background: var(--light-color);
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-}
-
-.exam-date:hover {
-    background: #e2e8f0;
-}
-
-.exam-date .date {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-right: 1rem;
-    min-width: 60px;
-}
-
-.exam-date .title {
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-}
-
-.exam-date .places {
-    font-size: 0.9rem;
-    color: var(--success-color);
-}
-
-/* Application Form */
-.application-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
-}
-
-.application-form {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
-}
-
-.contact-info {
-    margin-top: 2rem;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.contact-item i {
-    font-size: 1.2rem;
-    margin-top: 0.2rem;
-    color: var(--secondary-color);
-}
-
-/* FAQ */
-.accordion-button {
-    font-weight: 600;
-    color: var(--dark-color);
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: var(--light-color);
-    color: var(--primary-color);
-}
-
-/* Testimonials */
-.testimonial-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    height: 100%;
-    position: relative;
-}
-
-.testimonial-content {
-    margin-bottom: 1.5rem;
-}
-
-.testimonial-content i {
-    font-size: 2rem;
-    color: var(--primary-color);
-    opacity: 0.3;
-    margin-bottom: 1rem;
-}
-
-.testimonial-author {
-    border-top: 2px solid var(--light-color);
-    padding-top: 1rem;
-}
-
-/* Footer */
-.footer-section {
-    background: var(--dark-color) !important;
-}
-
-.footer-section a {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.footer-section a:hover {
-    color: var(--secondary-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
+// НОК Строительство - JavaScript функциональность
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Плавная прокрутка для навигации
+    initSmoothScrolling();
+    
+    // Анимации при скролле
+    initScrollAnimations();
+    
+    // Валидация формы
+    initFormValidation();
+    
+    // Маска для телефона
+    initPhoneMask();
+    
+    // Счетчики статистики
+    initCounters();
+    
+    // Автоматическое скрытие уведомлений
+    initAlertAutoHide();
+});
+
+// Плавная прокрутка
+function initSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                const headerHeight = document.querySelector('.header-section').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Анимации при скролле
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-on-scroll');
+                
+                // Запуск счетчиков при появлении секции статистики
+                if (entry.target.classList.contains('hero-stats')) {
+                    startCounters();
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Наблюдаем за элементами для анимации
+    const animatedElements = document.querySelectorAll(
+        '.feature-card, .benefit-card, .pricing-card, .testimonial-card, .process-step, .hero-stats'
+    );
+    
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+}
+
+// Валидация формы
+function initFormValidation() {
+    const form = document.querySelector('.needs-validation');
+    
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            form.classList.add('was-validated');
+        });
+        
+        // Валидация полей в реальном времени
+        const inputs = form.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('input', function() {
+                if (this.classList.contains('is-invalid')) {
+                    validateField(this);
+                }
+            });
+        });
+    }
+}
+
+// Валидация отдельного поля
+function validateField(field) {
+    const isValid = field.checkValidity();
+    
+    field.classList.remove('is-valid', 'is-invalid');
+    
+    if (field.value.trim() !== '') {
+        field.classList.add(isValid ? 'is-valid' : 'is-invalid');
     }
     
-    .hero-section {
-        text-align: center;
+    // Специальная валидация для телефона
+    if (field.type === 'tel') {
+        const phoneRegex = /^[\+]?[7|8]?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+        if (field.value && !phoneRegex.test(field.value.replace(/\D/g, ''))) {
+            field.classList.add('is-invalid');
+            field.classList.remove('is-valid');
+        }
+    }
+}
+
+// Маска для телефона
+function initPhoneMask() {
+    const phoneInput = document.querySelector('input[type="tel"]');
+    
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.startsWith('8')) {
+                value = '7' + value.slice(1);
+            }
+            
+            if (value.startsWith('7')) {
+                value = value.slice(0, 11);
+                const formatted = value.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+$1 ($2) $3-$4-$5');
+                e.target.value = formatted;
+            } else if (value.length > 0) {
+                value = value.slice(0, 10);
+                const formatted = value.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '($1) $2-$3-$4');
+                e.target.value = formatted;
+            }
+        });
+        
+        phoneInput.addEventListener('keydown', function(e) {
+            // Разрешаем удаление и навигацию
+            if ([8, 9, 27, 13, 37, 38, 39, 40, 46].includes(e.keyCode)) {
+                return;
+            }
+            
+            // Разрешаем только цифры
+            if ((e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    }
+}
+
+// Счетчики статистики
+function initCounters() {
+    window.countersStarted = false;
+}
+
+function startCounters() {
+    if (window.countersStarted) return;
+    window.countersStarted = true;
+    
+    const counters = [
+        { element: document.querySelector('.hero-stats .stat-item:nth-child(1) h3'), target: 1500, suffix: '+' },
+        { element: document.querySelector('.hero-stats .stat-item:nth-child(2) h3'), target: 98, suffix: '%' },
+        { element: document.querySelector('.hero-stats .stat-item:nth-child(3) h3'), target: 5, suffix: ' лет' }
+    ];
+    
+    counters.forEach(counter => {
+        if (counter.element) {
+            animateCounter(counter.element, 0, counter.target, counter.suffix, 2000);
+        }
+    });
+}
+
+function animateCounter(element, start, end, suffix, duration) {
+    const startTime = performance.now();
+    
+    function updateCounter(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(start + (end - start) * easeOutQuart(progress));
+        element.textContent = current + suffix;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        }
     }
     
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
+    requestAnimationFrame(updateCounter);
+}
+
+function easeOutQuart(t) {
+    return 1 - (--t) * t * t * t;
+}
+
+// Автоматическое скрытие уведомлений
+function initAlertAutoHide() {
+    const alerts = document.querySelectorAll('.alert');
     
-    .construction-visual {
-        width: 250px;
-        height: 250px;
-    }
+    alerts.forEach(alert => {
+        setTimeout(() => {
+            const bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        }, 5000);
+    });
+}
+
+// Изменение стиля навигации при скролле
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header-section');
+    const scrolled = window.scrollY > 50;
     
-    .construction-icon, .safety-icon, .design-icon {
-        font-size: 3rem;
+    if (scrolled) {
+        header.style.background = 'rgba(31, 41, 55, 0.98)';
+        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+        header.style.background = 'rgba(31, 41, 55, 0.95)';
+        header.style.boxShadow = 'none';
     }
+});
+
+// Подсветка активного пункта меню
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     
-    .pricing-card.featured {
-        transform: none;
-    }
+    let currentSection = '';
     
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-    }
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
     
-    .contact-item i {
-        margin-bottom: 0.5rem;
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === currentSection) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Дополнительные анимации для строительных элементов
+function initConstructionAnimations() {
+    const constructionIcons = document.querySelectorAll('.construction-icon, .safety-icon, .design-icon');
+    
+    constructionIcons.forEach((icon, index) => {
+        icon.style.animationDelay = `${index * 0.5}s`;
+        
+        icon.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1) rotate(10deg)';
+            this.style.color = '#f97316';
+        });
+        
+        icon.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.color = '#f97316';
+        });
+    });
+}
+
+// Инициализация дополнительных анимаций
+setTimeout(initConstructionAnimations, 1000);
+
+// Обработка формы консультации
+document.addEventListener('submit', function(e) {
+    if (e.target.classList.contains('needs-validation')) {
+        const submitButton = e.target.querySelector('button[type="submit"]');
+        
+        if (submitButton) {
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Отправляем...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Отправить заявку';
+                submitButton.disabled = false;
+            }, 3000);
+        }
     }
-}
+});
 
-/* Анимации при скролле */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-on-scroll {
-    animation: slideInUp 0.6s ease-out;
-}
-
-/* Кнопки */
-.btn-primary {
-    background: linear-gradient(45deg, var(--primary-color), #3b82f6);
-    border: none;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    background: linear-gradient(45deg, #1d4ed8, var(--primary-color));
-    transform: translateY(-2px);
-}
-
-.btn-outline-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.btn-outline-primary:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* Утилиты */
-.text-primary {
-    color: var(--primary-color) !important;
-}
-
-.bg-primary {
-    background: var(--primary-color) !important;
-}
-
-.bg-light {
-    background: var(--light-color) !important;
+// Lazy loading для изображений
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
 }
