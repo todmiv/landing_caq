@@ -1,69 +1,0 @@
-�
-
-    w�Bh�	  �                   �8   � d Z ddlZddlmZ  G d� d�  �        ZdS )z%
-Application configuration settings.
-�    N)�Optionalc                   �0   � e Zd ZdZd� Zdefd�Zdefd�ZdS )�Settingsz7Application settings loaded from environment variables.c                 �V  � t          j        dd�  �        | _        t          j        dd�  �        | _        t          j        dd�  �        | _        t          j        dd�  �        �                    �   �         | _        t          j        d�  �        | _        t          j        d	�  �        | _        t          t          j        d
-d�  �        �  �        | _
-        t          t          j        dd�  �        �  �        | _        t          j        d
-d�  �        �                    �   �         dv | _
-        dS )z/Initialize settings from environment variables.�TELEGRAM_BOT_TOKEN� �DEEPSEEK_API_KEY�DEEPSEEK_BASE_URLzhttps://api.deepseek.com�	LOG_LEVEL�INFO�BOT_USERNAME�WEBHOOK_URL�MAX_REQUESTS_PER_MINUTE�30�API_TIMEOUT�DEBUG�False)�true�1�yesN)�os�getenv�telegram_token�deepseek_api_key�deepseek_base_url�upper�	log_level�bot_username�webhook_url�int�max_requests_per_minute�api_timeout�lower�debug��selfs    �)/home/runner/workspace/config/settings.py�__init__zSettings.__init__   s�   � � $&�9�-A�2�#F�#F��� &(�Y�/A�2�%F�%F���&(�i�0C�E_�&`�&`��� !�i��V�<�<�B�B�D�D��� ,.�9�^�+D�+D���*,�)�M�*B�*B��� -0��	�:S�UY�0Z�0Z�,[�,[��$� !$�B�I�m�T�$B�$B� C� C��� �9�W�g�6�6�<�<�>�>�BV�V��
-�
-�
-�    �returnc                 �   � d| j         fd| j        fg}g }|D ]\  }}|s|�                    |�  �         �|r't          dd�                    |�  �        � ��  �         dS dS )z�
-        Validate that all required settings are present.
-        
-        Returns:
-            True if all required settings are valid, False otherwise
-        r   r	   z(Missing required environment variables: z, FT)r   r   �append�print�join)r&   �required_settings�missing_settings�setting_name�
-setting_values        r'   �validatezSettings.validate$   s�   � � "�4�#6�7�
-��!6�7�
-��
- ��+<� 	6� 	6�'�L�-� � 
-6� �'�'��5�5�5�� 	��Z�T�Y�Y�GW�=X�=X�Z�Z�[�[�[��5��tr)   c                 �h   � d| j         rdnd� d| j        rdnd� d| j        � d| j        � d| j        � d�S )	z;String representation of settings (without sensitive data).zSettings(
-  telegram_token=z
-**********�NOT_SETz
-  deepseek_api_key=z
-  deepseek_base_url=z
-  log_level=z	
-  debug=z
-))r   r   r   r   r$   r%   s    r'   �__str__zSettings.__str__;   sw   � �
-�,0�,?� N���Y�
-� 
-�.2�.C�"R�(�(��
-� 
-� $(�#9�
-� 
-�  �>�	
-� 
-�
- �z�
-� 
-� 
-�	
-r)   N)	�__name__�
-__module__�__qualname__�__doc__r(   �boolr3   �strr6   � r)   r'   r   r      sb   � � � � � �A�A�W� W� W�2�$� � � � �.
-
-�� 
-
-� 
-
-� 
-
-� 
-
-� 
-
-� 
-
-r)   r   )r:   r   �typingr   r   r=   r)   r'   �<module>r?      s^   ��� � 
-�	�	�	� � � � � � �=
-� =
-� =
-� =
-� =
-� =
-� =
-� =
-� =
-� =
-r)   
