@@ -3,6 +3,8 @@
 Лендинг для НОК (независимая оценка квалификации) в строительстве и архитектуре
 """
 
+pip install flask
+
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, EmailField, TelField, SelectField, TextAreaField, BooleanField
