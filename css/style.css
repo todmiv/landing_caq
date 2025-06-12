@@ -491,6 +491,90 @@ body {
     color: var(--secondary-color);
 }
 
+/* Consultation specific styles */
+.consultation-list {
+    list-style: none;
+    padding: 0;
+}
+
+.consultation-list li {
+    padding: 0.75rem 0;
+    font-size: 1.1rem;
+}
+
+.contact-card {
+    border: 1px solid #e5e7eb;
+}
+
+.contact-details div {
+    line-height: 1.8;
+}
+
+.consultation-form {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-item {
+    padding: 2rem 1rem;
+}
+
+.benefit-item i {
+    transition: var(--transition);
+}
+
+.benefit-item:hover i {
+    transform: scale(1.1);
+    color: var(--secondary-color) !important;
+}
+
+/* Animations */
+.animate-on-scroll {
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Form Styles */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .section-title {
@@ -498,11 +582,11 @@ body {
     }
     
     .hero-section {
-        text-align: center;
+        padding-top: 100px;
     }
     
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .construction-visual {
@@ -516,11 +600,35 @@ body {
     
     .pricing-card.featured {
         transform: none;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-buttons {
+        text-align: center;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+    
+    .stat-item h3 {
+        font-size: 1.5rem;
+    }
+    
+    .benefit-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .benefit-icon i {
+        font-size: 1.5rem;
     }
     
     .contact-item {
         flex-direction: column;
-        text-align: center;
+        align-items: flex-start;
     }
     
     .contact-item i {
@@ -528,54 +636,31 @@ body {
     }
 }
 
-/* Анимации при скролле */
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.75rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    
+    .hero-content h1 {
+        font-size: 1.75rem;
     }
-}
-
-.animate-on-scroll {
-    animation: slideInUp 0.6s ease-out;
-}
-
-/* Кнопки */
-.btn-primary {
-    background: linear-gradient(45deg, var(--primary-color), #3b82f6);
-    border: none;
-    transition: var(--transition);
-}
-
-.btn-primary:hover {
-    background: linear-gradient(45deg, #1d4ed8, var(--primary-color));
-    transform: translateY(-2px);
-}
-
-.btn-outline-primary {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.btn-outline-primary:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* Утилиты */
-.text-primary {
-    color: var(--primary-color) !important;
-}
-
-.bg-primary {
-    background: var(--primary-color) !important;
-}
-
-.bg-light {
-    background: var(--light-color) !important;
+    
+    .price {
+        font-size: 2.5rem;
+    }
+    
+    .step-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .step-icon i {
+        font-size: 2.5rem;
+    }
+    
+    .application-form,
+    .consultation-form {
+        padding: 1.5rem;
+    }
 }
