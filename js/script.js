@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Автоматическое скрытие уведомлений
     initAlertAutoHide();
+    
+    // Обработка отправки форм
+    initFormSubmission();
 });
 
 // Плавная прокрутка
@@ -76,9 +79,9 @@ function initScrollAnimations() {
 
 // Валидация формы
 function initFormValidation() {
-    const form = document.querySelector('.needs-validation');
+    const forms = document.querySelectorAll('.needs-validation');
     
-    if (form) {
+    forms.forEach(form => {
         form.addEventListener('submit', function(event) {
             if (!form.checkValidity()) {
                 event.preventDefault();
@@ -101,7 +104,7 @@ function initFormValidation() {
                 }
             });
         });
-    }
+    });
 }
 
 // Валидация отдельного поля
@@ -126,9 +129,9 @@ function validateField(field) {
 
 // Маска для телефона
 function initPhoneMask() {
-    const phoneInput = document.querySelector('input[type="tel"]');
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
     
-    if (phoneInput) {
+    phoneInputs.forEach(phoneInput => {
         phoneInput.addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             
@@ -158,7 +161,7 @@ function initPhoneMask() {
                 e.preventDefault();
             }
         });
-    }
+    });
 }
 
 // Счетчики статистики
@@ -173,7 +176,7 @@ function startCounters() {
     const counters = [
         { element: document.querySelector('.hero-stats .stat-item:nth-child(1) h3'), target: 1500, suffix: '+' },
         { element: document.querySelector('.hero-stats .stat-item:nth-child(2) h3'), target: 98, suffix: '%' },
-        { element: document.querySelector('.hero-stats .stat-item:nth-child(3) h3'), target: 5, suffix: ' лет' }
+        { element: document.querySelector('.hero-stats .stat-item:nth-child(3) h3'), target: 3, suffix: ' года' }
     ];
     
     counters.forEach(counter => {
@@ -211,9 +214,74 @@ function initAlertAutoHide() {
     
     alerts.forEach(alert => {
         setTimeout(() => {
-            const bsAlert = new bootstrap.Alert(alert);
-            bsAlert.close();
+            if (window.bootstrap && window.bootstrap.Alert) {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }
         }, 5000);
+    });
+}
+
+// Отображение flash сообщений
+function showFlashMessage(message, type) {
+    const flashContainer = document.getElementById('flash-messages');
+    const flashMessage = document.getElementById('flash-message-text');
+    const alertDiv = flashContainer.querySelector('.alert');
+    
+    if (flashContainer && flashMessage && alertDiv) {
+        // Устанавливаем текст сообщения
+        flashMessage.textContent = message;
+        
+        // Устанавливаем тип сообщения
+        alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} alert-dismissible fade show`;
+        
+        // Показываем контейнер
+        flashContainer.style.display = 'block';
+        
+        // Автоматически скрываем через 5 секунд
+        setTimeout(() => {
+            flashContainer.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Инициализация обработки отправки форм
+function initFormSubmission() {
+    const forms = document.querySelectorAll('.needs-validation');
+    
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (form.checkValidity()) {
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                
+                // Показываем индикатор загрузки
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Отправляем...';
+                submitButton.disabled = true;
+                
+                // Симулируем отправку формы
+                setTimeout(() => {
+                    // Показываем сообщение об успехе
+                    showFlashMessage('Ваша заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                    
+                    // Очищаем форму
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    
+                    // Восстанавливаем кнопку
+                    submitButton.innerHTML = originalButtonText;
+                    submitButton.disabled = false;
+                    
+                    // Прокручиваем к началу страницы для показа сообщения
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                }, 2000);
+            } else {
+                showFlashMessage('Пожалуйста, исправьте ошибки в форме.', 'error');
+            }
+        });
     });
 }
 
@@ -276,23 +344,6 @@ function initConstructionAnimations() {
 
 // Инициализация дополнительных анимаций
 setTimeout(initConstructionAnimations, 1000);
-
-// Обработка формы консультации
-document.addEventListener('submit', function(e) {
-    if (e.target.classList.contains('needs-validation')) {
-        const submitButton = e.target.querySelector('button[type="submit"]');
-        
-        if (submitButton) {
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Отправляем...';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Отправить заявку';
-                submitButton.disabled = false;
-            }, 3000);
-        }
-    }
-});
 
 // Lazy loading для изображений
 if ('IntersectionObserver' in window) {
