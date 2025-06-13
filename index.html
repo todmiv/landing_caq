@@ -741,7 +741,7 @@ document.getElementById('application-form').addEventListener('submit', function(
     const data = {};
     formData.forEach((value, key) => data[key] = value);
 
-    fetch('https://script.google.com/macros/s/AKfycbx70ICg81UlGE8cqs59Zyq3i7sG08wrFe91NKTqSeBGgU4h1IVDnzZbKo5lAwWfB5rFzg/exec',  {
+    fetch('https://script.google.com/macros/s/AKfycbwmflFhKvWb_Avrtq4guQUxPSy40AsCUbnOKXRfsVrif2Cz9LG8hJEyGE-7bBFNi3Qfig/exec',  {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
