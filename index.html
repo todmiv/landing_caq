@@ -737,28 +737,41 @@
      <script>
 document.getElementById('application-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // Собираем данные формы
     const formData = new FormData(this);
-    const data = {};
-    formData.forEach((value, key) => data[key] = value);
+    const urlEncodedData = new URLSearchParams();
+    
+    // Преобразуем FormData в формат x-www-form-urlencoded
+    for (const [key, value] of formData.entries()) {
+        urlEncodedData.append(key, value);
+    }
 
-    fetch('https://script.google.com/macros/s/AKfycbzaG0dO0toRrdkVVI_5_56lguN18h8nv3Jzt6f9mwemkrBPvgkQGsP3fUPFZLwHybJQkw/exec',  {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
+    // Отправляем данные в новом формате
+    fetch('https://script.google.com/macros/s/AKfycbzaG0dO0toRrdkVVI_5_56lguN18h8nv3Jzt6f9mwemkrBPvgkQGsP3fUPFZLwHybJQkw/exec', {
+        method: 'POST',
+        body: urlEncodedData,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+    })
     .then(result => {
-      if (result.result === 'success') {
-        alert('Заявка успешно отправлена!');
-        document.getElementById('nok-form').reset();
-      } else {
-        alert('Ошибка: ' + result.message);
-      }
+        if (result.success) {
+            alert('Заявка успешно отправлена!');
+            document.getElementById('application-form').reset();
+        } else {
+            alert('Ошибка: ' + (result.errors ? result.errors.join(', ') : 'Неизвестная ошибка'));
+        }
     })
     .catch(error => {
-      alert('Произошла ошибка: ' + error);
+        console.error('Error:', error);
+        alert('Произошла ошибка: ' + error.message);
     });
-  });
+});
 </script>
 </body>
 </html>
